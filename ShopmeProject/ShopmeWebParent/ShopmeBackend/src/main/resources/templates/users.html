@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
 
-	<title>Home - Shopme Admin</title>
+	<title>[[${pageTitle}]]</title>
 
 	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
@@ -64,7 +64,7 @@
 	</div>
 	<div>
 		<h2>Manage Users</h2>
-		<a th:href="@{/users/new}">Create New User</a>	
+		<a th:href="@{/users/new}">Create new User</a>	
 	</div>
 
 	<div th:if="${message != null}" class="alert alert-success text-center">
@@ -104,7 +104,7 @@
 					
 					<td>
 						<a class="fas fa-edit fa-2x icon-green" 
-						href=""></a>
+						th:href="@{'/users/edit/' + ${user.id}}" title="Edit this User"></a>
 						&nbsp; 
 						<a class="fas fa-trash fa-2x icon-dark" 
 						href=""></a>
