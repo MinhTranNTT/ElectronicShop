@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +17,8 @@ import com.shopme.common.entity.User;
 @Service
 @Transactional
 public class UserService {
+	
+	public static final int USERS_PER_PAGE = 4;
 	
 	@Autowired private UserRepository userRepo;
 	@Autowired private RoleRepository roleRepo;
@@ -93,5 +98,11 @@ public class UserService {
 	
 	public void updateUserEnabledStatus(Integer id, boolean enabled) {
 		userRepo.updateEnabledStatus(id, enabled);
+	}
+	
+	public Page<User> listByPage(int pageNum) {
+		Pageable pageable = PageRequest.of(pageNum - 1, USERS_PER_PAGE);
+		
+		return userRepo.findAll(pageable);
 	}
 }
