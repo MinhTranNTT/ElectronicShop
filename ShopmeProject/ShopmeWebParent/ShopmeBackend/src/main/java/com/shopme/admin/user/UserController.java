@@ -2,6 +2,9 @@ package com.shopme.admin.user;
 
 import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.util.StringUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,5 +162,12 @@ public class UserController {
 		
 		String firstPartOfEmail = user.getEmail().split("@")[0];
 		return "redirect:/users/page/1?sortField=id&sortDir=asc&keyword=" + firstPartOfEmail;
+	}
+	
+	@GetMapping("/users/export/csv")
+	public void exportToCSV(HttpServletResponse response) throws IOException {
+		List<User> listUsers = service.listAll();
+		UserCsvExporter exporter = new UserCsvExporter();
+		exporter.export(listUsers, response);
 	}
 }
