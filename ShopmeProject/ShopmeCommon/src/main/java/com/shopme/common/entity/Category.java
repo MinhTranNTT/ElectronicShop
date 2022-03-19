@@ -53,6 +53,12 @@ public class Category {
 		this.image = "default.png";
 	}
 	
+	public Category(Integer id, String name, String alias) {
+		this.id = id;
+		this.name = name;
+		this.alias = alias;
+	}
+	
 	public Category(String name, Category parent) {
 		this(name);
 		this.parent = parent;
