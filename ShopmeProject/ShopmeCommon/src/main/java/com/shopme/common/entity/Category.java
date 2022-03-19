@@ -69,6 +69,7 @@ public class Category {
 		Category copyCategory = new Category();
 		copyCategory.setId(category.getId());
 		copyCategory.setName(category.getName());
+		copyCategory.setHasChildren(category.getChildren().size() > 0);
 
 		return copyCategory;
 	}
@@ -155,6 +156,17 @@ public class Category {
 	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
+	
+	public boolean isHasChildren() {
+		return hasChildren;
+	}
+
+	public void setHasChildren(boolean hasChildren) {
+		this.hasChildren = hasChildren;
+	}
+
+	@Transient
+	private boolean hasChildren;
 	
 	@Transient
 	public String getImagePath() {
