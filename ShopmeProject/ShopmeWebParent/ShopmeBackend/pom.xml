@@ -8,8 +8,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>ShopmeBackend</artifactId>
-	<name>ShopmeBackend</name>
+	<artifactId>ShopmeBackEnd</artifactId>
+	<name>ShopmeBackEnd</name>
 	<description>BackEnd Project</description>
 	<properties>
 		<java.version>11</java.version>
